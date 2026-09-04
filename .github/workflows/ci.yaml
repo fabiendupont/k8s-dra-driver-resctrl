@@ -52,7 +52,7 @@ jobs:
         uses: azure/setup-helm@v5
 
       - name: Lint Helm chart
-        run: helm lint deploy/helm/dra-cache-partition/
+        run: helm lint deploy/helm/dra-resctrl/
 
   image:
     runs-on: ubuntu-latest
@@ -61,12 +61,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build container image
-        run: docker build -t dra-cache-partition:ci .
+        run: docker build -t dra-resctrl:ci .
 
       - name: Run Trivy vulnerability scan
         uses: aquasecurity/trivy-action@0.31.0
         with:
-          image-ref: dra-cache-partition:ci
+          image-ref: dra-resctrl:ci
           format: sarif
           output: trivy-results.sarif
           severity: HIGH,CRITICAL

@@ -1,9 +1,9 @@
 apiVersion: resource.k8s.io/v1
 kind: DeviceClass
 metadata:
-  name: {{ include "dra-cache-partition.fullname" . }}-slices
+  name: {{ include "dra-resctrl.fullname" . }}-slices
   labels:
-    {{- include "dra-cache-partition.labels" . | nindent 4 }}
+    {{- include "dra-resctrl.labels" . | nindent 4 }}
 spec:
   selectors:
     - cel:

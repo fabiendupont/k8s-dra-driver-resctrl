@@ -11,7 +11,7 @@ import (
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/klog/v2"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/cache"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/cache"
 )
 
 // formatCacheSize returns a human-readable cache size string (e.g. "5MiB", "2.5MiB", "512KiB").

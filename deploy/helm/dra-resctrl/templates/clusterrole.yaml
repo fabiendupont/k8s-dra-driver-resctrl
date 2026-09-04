@@ -1,9 +1,9 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ include "dra-cache-partition.fullname" . }}
+  name: {{ include "dra-resctrl.fullname" . }}
   labels:
-    {{- include "dra-cache-partition.labels" . | nindent 4 }}
+    {{- include "dra-resctrl.labels" . | nindent 4 }}
 rules:
   - apiGroups: ["resource.k8s.io"]
     resources: ["resourceslices"]

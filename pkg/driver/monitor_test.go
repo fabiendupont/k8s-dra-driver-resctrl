@@ -10,7 +10,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/testutil"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/resctrl"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/resctrl"
 )
 
 func makeMonDir(t *testing.T, root, group string, cacheID int, llc, local, total uint64) {

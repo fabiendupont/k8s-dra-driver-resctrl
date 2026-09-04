@@ -3,7 +3,7 @@ package driver
 import (
 	"testing"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/cache"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/cache"
 )
 
 func makeState(ids ...string) *AllocationState {

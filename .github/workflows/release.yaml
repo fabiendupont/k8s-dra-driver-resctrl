@@ -12,8 +12,8 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/dra-cache-partition
-  CHART_NAME: dra-cache-partition
+  IMAGE_NAME: ${{ github.repository_owner }}/dra-resctrl
+  CHART_NAME: dra-resctrl
 
 jobs:
   image:
@@ -91,19 +91,19 @@ jobs:
 
       - name: Update Chart.yaml version
         run: |
-          sed -i "s/^version:.*/version: ${{ steps.version.outputs.version }}/" deploy/helm/dra-cache-partition/Chart.yaml
-          sed -i "s/^appVersion:.*/appVersion: \"${{ steps.version.outputs.version }}\"/" deploy/helm/dra-cache-partition/Chart.yaml
+          sed -i "s/^version:.*/version: ${{ steps.version.outputs.version }}/" deploy/helm/dra-resctrl/Chart.yaml
+          sed -i "s/^appVersion:.*/appVersion: \"${{ steps.version.outputs.version }}\"/" deploy/helm/dra-resctrl/Chart.yaml
 
       - name: Update default image in values.yaml
         run: |
-          sed -i "s|repository:.*|repository: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}|" deploy/helm/dra-cache-partition/values.yaml
-          sed -i "s|tag:.*|tag: \"${{ github.ref_name }}\"|" deploy/helm/dra-cache-partition/values.yaml
+          sed -i "s|repository:.*|repository: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}|" deploy/helm/dra-resctrl/values.yaml
+          sed -i "s|tag:.*|tag: \"${{ github.ref_name }}\"|" deploy/helm/dra-resctrl/values.yaml
 
       - name: Lint chart
-        run: helm lint deploy/helm/dra-cache-partition/
+        run: helm lint deploy/helm/dra-resctrl/
 
       - name: Package chart
-        run: helm package deploy/helm/dra-cache-partition/ --destination .helm-packages/
+        run: helm package deploy/helm/dra-resctrl/ --destination .helm-packages/
 
       - name: Log in to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
@@ -143,9 +143,9 @@ jobs:
           ## Helm Chart
 
           \`\`\`bash
-          helm install dra-cache-partition oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts/${{ env.CHART_NAME }} \\
+          helm install dra-resctrl oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts/${{ env.CHART_NAME }} \\
             --version ${{ steps.version.outputs.version }} \\
-            -n dra-cache-partition --create-namespace
+            -n dra-resctrl --create-namespace
           \`\`\`
 
           ## What's Changed

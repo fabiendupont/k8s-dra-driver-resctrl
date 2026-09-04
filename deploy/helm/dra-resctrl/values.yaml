@@ -1,11 +1,11 @@
 nameOverride: ""
 fullnameOverride: ""
 
-driverName: "cache-partition.fabiendupont.io"
+driverName: "resctrl.fabiendupont.io"
 
 driver:
   image:
-    repository: ghcr.io/fabiendupont/dra-cache-partition
+    repository: ghcr.io/fabiendupont/dra-resctrl
     pullPolicy: IfNotPresent
     tag: ""
   imagePullSecrets: []
@@ -37,7 +37,7 @@ driver:
       memory: 256Mi
 
   nodeSelector:
-    cache-partition.fabiendupont.io/resctrl-cat: "true"
+    resctrl.fabiendupont.io/resctrl-cat: "true"
   tolerations: []
   affinity: {}
   podLabels: {}

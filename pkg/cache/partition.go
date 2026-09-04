@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/resctrl"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/resctrl"
 )
 
 // PartitionSpec describes one size tier: Count partitions each with Ways cache ways.

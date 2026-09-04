@@ -20,12 +20,12 @@ import (
 	"k8s.io/klog/v2"
 	drav1 "k8s.io/kubelet/pkg/apis/dra/v1"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/cache"
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/driver"
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/resctrl"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/cache"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/driver"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/resctrl"
 )
 
-const driverName = "cache-partition.fabiendupont.io"
+const driverName = "resctrl.fabiendupont.io"
 
 func main() {
 	// CDI hook mode: invoked by CRI-O as an OCI hook to assign the container
@@ -50,7 +50,7 @@ func main() {
 		mbaBandwidth   int
 	)
 
-	flag.StringVar(&socketPath, "socket", "/var/lib/kubelet/plugins/cache-partition.fabiendupont.io/plugin.sock", "DRA plugin gRPC socket path")
+	flag.StringVar(&socketPath, "socket", "/var/lib/kubelet/plugins/resctrl.fabiendupont.io/plugin.sock", "DRA plugin gRPC socket path")
 	flag.StringVar(&registryDir, "registry-dir", "/var/lib/kubelet/plugins_registry", "Kubelet plugin registry directory")
 	flag.StringVar(&nodeName, "node-name", "", "Kubernetes node name")
 	flag.IntVar(&partitionCount, "partition-count", 4, "Number of equal cache partitions per cache domain (ignored when --partition-sizes is set)")

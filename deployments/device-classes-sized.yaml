@@ -24,8 +24,8 @@ spec:
   selectors:
     - cel:
         expression: >
-          device.driver == 'cache-partition.fabiendupont.io' &&
-          device.attributes['cache-partition.fabiendupont.io'].cacheLevel == 'L3'
+          device.driver == 'resctrl.fabiendupont.io' &&
+          device.attributes['resctrl.fabiendupont.io'].cacheLevel == 'L3'
 
 ---
 # At least a quarter of the L3 cache (≥ 25% of total ways).
@@ -38,9 +38,9 @@ spec:
   selectors:
     - cel:
         expression: >
-          device.driver == 'cache-partition.fabiendupont.io' &&
-          device.attributes['cache-partition.fabiendupont.io'].cacheWays * 4 >=
-          device.attributes['cache-partition.fabiendupont.io'].cacheTotalWays
+          device.driver == 'resctrl.fabiendupont.io' &&
+          device.attributes['resctrl.fabiendupont.io'].cacheWays * 4 >=
+          device.attributes['resctrl.fabiendupont.io'].cacheTotalWays
 
 ---
 # At least a third of the L3 cache (≥ 33% of total ways).
@@ -52,9 +52,9 @@ spec:
   selectors:
     - cel:
         expression: >
-          device.driver == 'cache-partition.fabiendupont.io' &&
-          device.attributes['cache-partition.fabiendupont.io'].cacheWays * 3 >=
-          device.attributes['cache-partition.fabiendupont.io'].cacheTotalWays
+          device.driver == 'resctrl.fabiendupont.io' &&
+          device.attributes['resctrl.fabiendupont.io'].cacheWays * 3 >=
+          device.attributes['resctrl.fabiendupont.io'].cacheTotalWays
 
 ---
 # At least half the L3 cache (≥ 50% of total ways).
@@ -66,9 +66,9 @@ spec:
   selectors:
     - cel:
         expression: >
-          device.driver == 'cache-partition.fabiendupont.io' &&
-          device.attributes['cache-partition.fabiendupont.io'].cacheWays * 2 >=
-          device.attributes['cache-partition.fabiendupont.io'].cacheTotalWays
+          device.driver == 'resctrl.fabiendupont.io' &&
+          device.attributes['resctrl.fabiendupont.io'].cacheWays * 2 >=
+          device.attributes['resctrl.fabiendupont.io'].cacheTotalWays
 
 ---
 # At least 4 MiB of cache. Works on any CPU where partition sizes align.
@@ -81,8 +81,8 @@ spec:
   selectors:
     - cel:
         expression: >
-          device.driver == 'cache-partition.fabiendupont.io' &&
-          device.attributes['cache-partition.fabiendupont.io'].cacheSizeBytes >= 4194304
+          device.driver == 'resctrl.fabiendupont.io' &&
+          device.attributes['resctrl.fabiendupont.io'].cacheSizeBytes >= 4194304
 
 ---
 # At least 8 MiB of cache.
@@ -94,8 +94,8 @@ spec:
   selectors:
     - cel:
         expression: >
-          device.driver == 'cache-partition.fabiendupont.io' &&
-          device.attributes['cache-partition.fabiendupont.io'].cacheSizeBytes >= 8388608
+          device.driver == 'resctrl.fabiendupont.io' &&
+          device.attributes['resctrl.fabiendupont.io'].cacheSizeBytes >= 8388608
 
 ---
 # MBA bandwidth throttle — a partition with MBA configured.
@@ -109,5 +109,5 @@ spec:
   selectors:
     - cel:
         expression: >
-          device.driver == 'cache-partition.fabiendupont.io' &&
-          has(device.attributes['cache-partition.fabiendupont.io'].mbaBandwidth)
+          device.driver == 'resctrl.fabiendupont.io' &&
+          has(device.attributes['resctrl.fabiendupont.io'].mbaBandwidth)

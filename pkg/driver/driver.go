@@ -13,7 +13,7 @@ import (
 	"k8s.io/klog/v2"
 	drav1 "k8s.io/kubelet/pkg/apis/dra/v1"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/resctrl"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/resctrl"
 )
 
 // structuredAlloc records an on-demand resctrl group created in structured mode.

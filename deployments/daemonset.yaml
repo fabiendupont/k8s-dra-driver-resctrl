@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: dra-cache-partition
-  namespace: dra-cache-partition
+  name: dra-resctrl
+  namespace: dra-resctrl
 spec:
   selector:
     matchLabels:
-      app: dra-cache-partition
+      app: dra-resctrl
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
@@ -14,15 +14,15 @@ spec:
   template:
     metadata:
       labels:
-        app: dra-cache-partition
+        app: dra-resctrl
     spec:
-      serviceAccountName: dra-cache-partition
+      serviceAccountName: dra-resctrl
       terminationGracePeriodSeconds: 60
       nodeSelector:
-        cache-partition.fabiendupont.io/resctrl-cat: "true"
+        resctrl.fabiendupont.io/resctrl-cat: "true"
       containers:
         - name: driver
-          image: ghcr.io/fabiendupont/dra-cache-partition:latest
+          image: ghcr.io/fabiendupont/dra-resctrl:latest
           args:
             - --node-name=$(NODE_NAME)
             - --partition-count=4

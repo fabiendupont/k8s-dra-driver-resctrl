@@ -2,14 +2,14 @@
 apiVersion: nfd.k8s-sigs.io/v1alpha1
 kind: NodeFeatureRule
 metadata:
-  name: {{ include "dra-cache-partition.fullname" . }}-resctrl-cat
+  name: {{ include "dra-resctrl.fullname" . }}-resctrl-cat
   labels:
-    {{- include "dra-cache-partition.labels" . | nindent 4 }}
+    {{- include "dra-resctrl.labels" . | nindent 4 }}
 spec:
   rules:
     - name: resctrl-cat
       labels:
-        cache-partition.fabiendupont.io/resctrl-cat: "true"
+        resctrl.fabiendupont.io/resctrl-cat: "true"
       matchFeatures:
         - feature: cpu.cpuid
           matchExpressions:

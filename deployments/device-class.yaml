@@ -5,4 +5,4 @@ metadata:
 spec:
   selectors:
     - cel:
-        expression: "device.driver == 'cache-partition.fabiendupont.io'"
+        expression: "device.driver == 'resctrl.fabiendupont.io'"

@@ -16,4 +16,4 @@ spec:
           selectors:
             - cel:
                 expression: >
-                  device.attributes['cache-partition.fabiendupont.io'].cacheSizeBytes >= 5242880
+                  device.attributes['resctrl.fabiendupont.io'].cacheSizeBytes >= 5242880

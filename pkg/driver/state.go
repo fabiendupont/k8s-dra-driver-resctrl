@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/cache"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/cache"
 )
 
 // PartitionState tracks whether a cache partition is available or allocated.

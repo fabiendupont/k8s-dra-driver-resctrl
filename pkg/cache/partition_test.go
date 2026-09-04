@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/resctrl"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/resctrl"
 )
 
 func testCATInfo(numWays, numCLOSIDs int, cacheIDs []int) *resctrl.CATInfo {

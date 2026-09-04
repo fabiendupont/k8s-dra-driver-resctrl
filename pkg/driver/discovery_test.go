@@ -8,11 +8,11 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes/fake"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/cache"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/cache"
 )
 
 const (
-	testDriver = "cache-partition.fabiendupont.io"
+	testDriver = "resctrl.fabiendupont.io"
 	testNode   = "node-1"
 )
 

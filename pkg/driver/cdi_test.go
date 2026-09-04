@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/cache"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/cache"
 )
 
 func makePartitions() [][]*cache.CachePartition {

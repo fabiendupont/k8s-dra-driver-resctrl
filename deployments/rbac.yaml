@@ -1,18 +1,18 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dra-cache-partition
+  name: dra-resctrl
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: dra-cache-partition
-  namespace: dra-cache-partition
+  name: dra-resctrl
+  namespace: dra-resctrl
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: dra-cache-partition
+  name: dra-resctrl
 rules:
   - apiGroups: ["resource.k8s.io"]
     resources: ["resourceslices"]
@@ -27,12 +27,12 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: dra-cache-partition
+  name: dra-resctrl
 subjects:
   - kind: ServiceAccount
-    name: dra-cache-partition
-    namespace: dra-cache-partition
+    name: dra-resctrl
+    namespace: dra-resctrl
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: dra-cache-partition
+  name: dra-resctrl

@@ -8,7 +8,7 @@ import (
 
 	"k8s.io/klog/v2"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/resctrl"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/resctrl"
 )
 
 // MonitorTarget describes one resctrl group to be scraped.

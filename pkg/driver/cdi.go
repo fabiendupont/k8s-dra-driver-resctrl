@@ -9,11 +9,11 @@ import (
 
 	"k8s.io/klog/v2"
 
-	"github.com/fabiendupont/k8s-dra-driver-cache-partition/pkg/cache"
+	"github.com/fabiendupont/k8s-dra-driver-resctrl/pkg/cache"
 )
 
 const (
-	cdiVendor  = "cache-partition.fabiendupont.io"
+	cdiVendor  = "resctrl.fabiendupont.io"
 	cdiClass   = "partition"
 	cdiVersion = "0.6.0"
 )

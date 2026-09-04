@@ -1,4 +1,4 @@
-module github.com/fabiendupont/k8s-dra-driver-cache-partition
+module github.com/fabiendupont/k8s-dra-driver-resctrl
 
 go 1.26.0
 

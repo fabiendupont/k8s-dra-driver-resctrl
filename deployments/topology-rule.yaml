@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cache-partition-topology-rule
-  namespace: dra-cache-partition
+  namespace: dra-resctrl
   labels:
     nodepartition.dra.k8s.io/topology-rule: "true"
 data:
@@ -10,9 +10,9 @@ data:
   # The coordinator uses cacheGroupID to co-locate claims from this driver
   # with claims from other DRA drivers (e.g. k8s-dra-driver-time-share)
   # that expose the same integer attribute for the same physical L3 domain.
-  attribute: "cache-partition.fabiendupont.io/cacheGroupID"
+  attribute: "resctrl.fabiendupont.io/cacheGroupID"
   type: "int"
-  driver: "cache-partition.fabiendupont.io"
+  driver: "resctrl.fabiendupont.io"
   mapsTo: ""
   partitioning: "group"
   constraint: "match"

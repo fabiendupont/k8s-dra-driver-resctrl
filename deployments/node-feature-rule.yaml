@@ -6,7 +6,7 @@ spec:
   rules:
     - name: resctrl-cat
       labels:
-        cache-partition.fabiendupont.io/resctrl-cat: "true"
+        resctrl.fabiendupont.io/resctrl-cat: "true"
       matchFeatures:
         - feature: cpu.cpuid
           matchExpressions:

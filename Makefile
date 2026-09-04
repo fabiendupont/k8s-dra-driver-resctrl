@@ -1,5 +1,5 @@
-BINARY    := dra-cache-partition
-IMAGE     := ghcr.io/fabiendupont/dra-cache-partition
+BINARY    := dra-resctrl
+IMAGE     := ghcr.io/fabiendupont/dra-resctrl
 TAG       := latest
 MODULE    := github.com/fabiendupont/k8s-dra-driver-cache-partition
 
