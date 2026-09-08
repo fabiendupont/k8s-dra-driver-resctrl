@@ -385,3 +385,32 @@ L2 information is exposed as informational device attributes: `l2Ways`, `l2Total
 - **CDI hook stderr**: Hook error output goes to CRI-O logs (`journalctl -u crio`), not to driver logs. Check CRI-O logs if containers fail to start with cache partition claims.
 - **L2 partitioning**: L2 CAT is pass-through only — all partitions share the full L2 CBM. Independent L2 isolation is not supported.
 - **MBM counter wrap**: MBM bandwidth counters are 64-bit monotonic; the driver skips rate computation on a wrap to avoid negative values. One sample (10s by default) is lost per wrap event.
+
+---
+
+## 13. Build and Multi-Arch Architecture (CI & Release)
+
+The container image supports both `linux/amd64` and `linux/arm64`.
+
+### Native Go Cross-Compilation vs QEMU Emulation
+
+In CI/CD environments (GitHub Actions `ubuntu-latest` x86_64 runners):
+- Full user-space QEMU emulation of an `arm64` container toolchain to run `go build` takes ~14 minutes due to emulation overhead.
+- The `Dockerfile` uses Docker Buildx multi-stage native cross-compilation:
+  ```dockerfile
+  FROM --platform=$BUILDPLATFORM registry.access.redhat.com/ubi10/go-toolset:1.26 AS builder
+  ARG TARGETARCH
+  ...
+  RUN CGO_ENABLED=0 GOOS=linux GOARCH=$TARGETARCH go build -buildvcs=false -o dra-resctrl ./cmd/driver
+  ```
+  The builder stage runs natively on the runner architecture (`BUILDPLATFORM`) and utilizes Go's native cross-compiler targeting `TARGETARCH`. The resulting binary is then copied into the target-architecture `ubi-micro` base image. This reduces arm64 build times from ~14 minutes to under a minute in CI.
+
+### Local Multi-Arch Build
+
+```bash
+# Build amd64
+podman build --platform linux/amd64 -t dra-resctrl:amd64 .
+
+# Build arm64 (fast cross-compile)
+podman build --platform linux/arm64 --build-arg TARGETARCH=arm64 -t dra-resctrl:arm64 .
+```
