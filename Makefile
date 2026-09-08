@@ -1,7 +1,7 @@
 BINARY    := dra-resctrl
 IMAGE     := ghcr.io/fabiendupont/dra-resctrl
 TAG       := latest
-MODULE    := github.com/fabiendupont/k8s-dra-driver-cache-partition
+MODULE    := github.com/fabiendupont/k8s-dra-driver-resctrl
 
 .PHONY: build test image clean
 

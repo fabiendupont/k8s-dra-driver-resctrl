@@ -1,8 +1,8 @@
-{{- define "dra-cache-partition.name" -}}
+{{- define "dra-resctrl.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
-{{- define "dra-cache-partition.fullname" -}}
+{{- define "dra-resctrl.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -15,30 +15,30 @@
 {{- end }}
 {{- end }}
 
-{{- define "dra-cache-partition.chart" -}}
+{{- define "dra-resctrl.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
-{{- define "dra-cache-partition.labels" -}}
-helm.sh/chart: {{ include "dra-cache-partition.chart" . }}
-{{ include "dra-cache-partition.selectorLabels" . }}
+{{- define "dra-resctrl.labels" -}}
+helm.sh/chart: {{ include "dra-resctrl.chart" . }}
+{{ include "dra-resctrl.selectorLabels" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
-{{- define "dra-cache-partition.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "dra-cache-partition.name" . }}
+{{- define "dra-resctrl.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "dra-resctrl.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{- define "dra-cache-partition.serviceAccountName" -}}
+{{- define "dra-resctrl.serviceAccountName" -}}
 {{- if .Values.driver.serviceAccount.create }}
-{{- default (include "dra-cache-partition.fullname" .) .Values.driver.serviceAccount.name }}
+{{- default (include "dra-resctrl.fullname" .) .Values.driver.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.driver.serviceAccount.name }}
 {{- end }}
 {{- end }}
 
-{{- define "dra-cache-partition.image" -}}
+{{- define "dra-resctrl.image" -}}
 {{- printf "%s:%s" .Values.driver.image.repository (default .Chart.AppVersion .Values.driver.image.tag) }}
 {{- end }}

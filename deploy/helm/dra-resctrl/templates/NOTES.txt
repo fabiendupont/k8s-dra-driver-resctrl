@@ -10,7 +10,7 @@ Or install the NodeFeatureRule for auto-detection (requires NFD):
   kubectl apply -f deployments/node-feature-rule.yaml
 
 Verify the driver is running:
-  kubectl -n {{ .Release.Namespace }} get pods -l app.kubernetes.io/name={{ include "dra-cache-partition.name" . }}
+  kubectl -n {{ .Release.Namespace }} get pods -l app.kubernetes.io/name={{ include "dra-resctrl.name" . }}
 
 Verify ResourceSlice is published:
   kubectl get resourceslices -o json | jq '.items[] | select(.spec.driver == "{{ .Values.driverName }}")'

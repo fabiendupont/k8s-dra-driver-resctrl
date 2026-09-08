@@ -75,7 +75,7 @@ func NewDriver(
 
 func (d *Driver) NodePrepareResources(ctx context.Context, req *drav1.NodePrepareResourcesRequest) (*drav1.NodePrepareResourcesResponse, error) {
 	start := time.Now()
-	defer PrepareDuration.Observe(time.Since(start).Seconds())
+	defer func() { PrepareDuration.Observe(time.Since(start).Seconds()) }()
 
 	resp := &drav1.NodePrepareResourcesResponse{
 		Claims: make(map[string]*drav1.NodePrepareResourceResponse),
@@ -227,7 +227,7 @@ func (d *Driver) prepareClaimStructured(ctx context.Context, claim *drav1.Claim)
 
 func (d *Driver) NodeUnprepareResources(ctx context.Context, req *drav1.NodeUnprepareResourcesRequest) (*drav1.NodeUnprepareResourcesResponse, error) {
 	start := time.Now()
-	defer UnprepareDuration.Observe(time.Since(start).Seconds())
+	defer func() { UnprepareDuration.Observe(time.Since(start).Seconds()) }()
 
 	resp := &drav1.NodeUnprepareResourcesResponse{
 		Claims: make(map[string]*drav1.NodeUnprepareResourceResponse),
