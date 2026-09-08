@@ -209,7 +209,7 @@ func writeClaimCDISpec(cdiDir, hookBinaryPath, claimUID, resctrlGroup string, ca
 					fmt.Sprintf("DRA_CACHE_PARTITION=%s", deviceName),
 					fmt.Sprintf("DRA_CACHE_WAYS=%d", ways),
 					fmt.Sprintf("DRA_CACHE_CBM=%s", cbmHex),
-					fmt.Sprintf("DRA_CACHE_LEVEL=L3"),
+					"DRA_CACHE_LEVEL=L3",
 					fmt.Sprintf("DRA_CACHE_DOMAIN=%d", cacheID),
 				},
 				Hooks: []CDIHook{{
